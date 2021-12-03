@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=800">
+    <title>Rocket PDF🚀</title>
+  <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=614b1af9588777001920d4f1&product=sticky-share-buttons" async="async"></script>
+  <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=614b1af9588777001920d4f1&product=sticky-share-buttons" async="async"></script> 
+  <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=614b1dd1588777001920d4f2&product=sop' async='async'></script>
+    <style>
+     
+		 .image_container {
+           
+		 	height: 1000px;
+		 	width: fit-content;
+		 	border-radius: 5px;
+		 	overflow: hidden;
+		 	margin: 10px;
+            page-break-after: always;
+		 }
+		 .image_container img {
+		 	height: 100%;
+		 	width: auto;
+		 	object-fit: cover;
+		 }
+		 .image_container span {
+		 	top: -6px;
+		 	right: 8px;
+		 	color: red;
+		 	font-size: 28px;
+		 	font-weight: normal;
+		 	cursor: pointer;
+		 }
+
+
+         @media print{
+   .noprint{
+       height: 5000px;
+		 	 width: fit-content;
+        display:none;
+       visibility: hidden;
+       page-break-after: always; 
+       page-break-before: always;
+       left: 0px;
+       top: 0px;
+       height: fit-content;
+       width: fit-content;
+       border: none;
+       
+       
+   }
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0%;
+  padding: 0%;
+
+} 
+
+.hr{
+  width: fit-content;
+  height: 20px;
+  
+  border: 5px solid black;
+ 
+  
+ 
+}
+
+ 
+/* .container-class{
+    .noprint{
+        height: absolute;
+    }
+} */
+h1{
+    text-align: left;
+    padding: 20px;
+    margin: 0%;
+    padding: 1%;
+    text-decoration: solid;
+    font-family: sans-serif;
+    color: black;
+    letter-spacing: 0.211rem;
+    
+    
+
+}
+.border{
+
+    border-top: 3px solid black;
+    border-width: fit-content;
+    width: auto;
+    
+}
+button {
+  font-size: 20px;
+  border: 0;
+  text-align: center;
+  display: inline-block;
+  padding: 14px;
+  width: 150px;
+  margin: 7px;
+  color: #ffffff;
+  background-color: #36a2eb;
+  border-radius: 8px;
+  font-family: "proxima-nova-soft", sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  transition: box-shadow 200ms ease-out;
+}
+#print {
+  height: 1000px;
+ 
+}
+	</style>
+
+
+
+
+
+
+
+</head>
+
+
+<body>
+  <h1><div class="noprint"> Rocket PDF 🚀 </div> </h1>
+ 
+    <center><div id="print">
+    <div class="container mt-3 w-100">
+        <div class="card shadow-sm w-100">
+            <div class="card-header d-flex justify-content-between">
+                 <!-- <h4>Image Uploading</h4> -->
+                 <form class="form" action="#" method="post" id="form">
+                     <input type="file" name="Image" id="image" multiple="" class="d-none" onchange="image_select()" style="display: none;">
+                     <div class="noprint"><button class="btn btn-sm btn-primary" type="button" onclick="document.getElementById('image').click()">Choose Images</button>  &nbsp&nbsp&nbsp&nbsp
+                        <button onclick="window.print()"> Download PDF</button></div>
+                     
+                 </form>
+                 <div class="noprint">
+                    <!-- element that need to be hidden when printing -->
+                    
+                <br>
+                <h2>PDF Preview</h2>
+                <div class="border"></div>
+                 </div>
+        
+            <div class="card-body d-flex flex-wrap justify-content-start" id="container" >
+                 <!-- Image will be show here-->  	  
+            </div>
+         
+  </div>
+
+
+</div>
+
+</div>
+  <!-- <div class="noprint">
+    <!-- element that need to be hidden when printing -->
+    <!-- <button onclick="window.print()"> Download Pdf</button>
+</div> --> 
+
+<div class="noprint">
+<div class="sharethis-sticky-share-buttons"></div>
+  </div>
+</center>
+
+  
+
+  <!-- <button id="button"> Download PDF</button> -->
+  <script>
+
+      var canvas = document.getElementById("canvas")
+    
+    var button = document.getElementById("button")
+
+    // <!-- this variable will store images for preview -->
+    var images = [];
+    
+    // <!-- this function will select images -->
+    function image_select() {}
+    
+    // <!-- this function will show images in the DOM -->
+    function image_show() {}
+    
+    // <!-- this function will delete a specific image from the container -->
+    function delete_image() {}
+    
+    // <!-- this function will check duplicate images -->
+    function check_duplicate()  {}
+
+    function image_select() {
+   	  	  var image = document.getElementById('image').files;
+   	  	  for (i = 0; i < image.length; i++) {
+   	  	  	  if (check_duplicate(image[i].name)) {
+                images.push({
+   	  	  	  	    "name" : image[i].name,
+   	  	  	  	    "url" : URL.createObjectURL(image[i]),
+   	  	  	  	    "file" : image[i],
+   	  	  	    })
+   	  	  	  } else 
+   	  	  	  {
+   	  	  	  	 alert(image[i].name + " is already added to the list");
+   	  	  	  }
+   	  	  }
+   	  	  document.getElementById('form').reset();
+   	  	  document.getElementById('container').innerHTML = image_show();
+   	  }
+         function image_show() {
+   	  	  var image = "";
+   	  	  images.forEach((i) => {
+   	  	  	 image += `<div class="image_container d-flex justify-content-center position-relative">
+   	  	  	  	  <img src="`+ i.url +`" alt="Image">
+                   <div1 class="noprint">
+   	  	  	  	  <span class="position-absolute" onclick="delete_image(`+ images.indexOf(i) +`)">&times;</span>
+                   </div1>
+   	  	  	  </div>`;
+   	  	  })
+   	  	  return image;
+   	  }
+         function delete_image(e) {
+   	  	  images.splice(e, 1);
+   	  	  document.getElementById('container').innerHTML = image_show();
+   	}
+       function check_duplicate(name) {
+   	  	var image = true;
+   	  	if (images.length > 0) {
+   	  		for (e = 0; e < images.length; e++) {
+   	  			if (images[e].name == name) {
+   	  				image = false;
+   	  				break;
+   	  			}
+   	  		}
+   	  	}
+   	  	return image;
+   	  }
+         // to send funtion to the server
+         function get_image_data() {
+   	  	var form = new FormData()
+            for (let index = 0; index < images.length; index++) {
+                form.append("file[" + index + "]", images[index]['file']);
+            }
+            return form;
+   	  }
+
+
+    
+
+ </script>
+
+
+</body>
+
+      
+</html>
